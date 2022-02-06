@@ -4,7 +4,7 @@
 
 	use Illuminate\Database\Eloquent\Factories\HasFactory;
 	use Illuminate\Database\Eloquent\Model;
-	use App\Models\SystemUser;
+	use App\Models\AtteUser;
 
 	class Attendance extends Model
 	{

@@ -8,7 +8,7 @@
 	class Rest extends Model
 	{
 	use HasFactory;
-	protected $table = 'rests';
+	protected $table = 'atte_rests';
 
 	protected $fillable = ['attendance_id', 'start_time', 'end_time'];
 
