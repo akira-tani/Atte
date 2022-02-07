@@ -72,7 +72,7 @@
 	<td>{{ $item->name }}</td>
 	<td>{{ substr($item->start_time,10)}}</td>
 	<td>{{ substr($item->end_time,10) }}</td>
-	<td></td>
+	<td>{{ gmdate('H:i:s',strtotime($item->end_time)-strtotime($item->start_time))}}</td>
 	<td>{{ gmdate('H:i:s',strtotime($item->end_time)-strtotime($item->start_time))}}</td>
 	</tr>
 	@endforeach

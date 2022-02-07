@@ -76,7 +76,7 @@
 	$date = Carbon::today()->format("Y-m-d");
 	$attendance =Attendance::where('atte_user_id',$user_id)->latest()->first();
 	$timeStamp = Rest::where('attendance_id', $attendance->id)->latest()->first();
-	$rests = DB::table('rests')->selectRaw('date_format(start_time,"%Y%m%d") as today')
+	$rests = DB::table('atte_rests')->selectRaw('date_format(start_time,"%Y%m%d") as today')
 	->selectRaw('sum(end_time-start_time) as rest_time')
 	->groupBy('attendance_id','today')
 	->get();
@@ -97,7 +97,7 @@
 	$user_id = Auth::id();
 	$attendance =Attendance::where('atte_user_id',$user_id)->latest()->first();
 	$timeStamp = Rest::where('attendance_id', $attendance->id)->latest()->first();
-	$rests = DB::table('rests')->selectRaw('date_format(start_time,"%Y%m%d") as today')
+	$rests = DB::table('atte_rests')->selectRaw('date_format(start_time,"%Y%m%d") as today')
 	->selectRaw('sum(end_time-start_time) as rest_time')
 	->get();
 	$items = Attendance::whereDate('start_time', $date)->join('atte_users','atte_users.id','=','attendances.atte_user_id')->paginate(5);
