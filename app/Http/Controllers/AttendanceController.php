@@ -80,7 +80,6 @@
 	->selectRaw('sum(end_time-start_time) as rest_time')
 	->groupBy('attendance_id','today')
 	->get();
-	dump($rests);
 	$items = Attendance::whereDate('start_time', $date)->join('atte_users','atte_users.id','=','attendances.atte_user_id')->paginate(5);
 	return view('list', ['items' => $items],['today' => $date]);
 	}

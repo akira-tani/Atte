@@ -25,6 +25,14 @@
 	padding-left:150px;
 	padding-bottom:15px;
 	}
+
+	.paginate{
+  margin:auto 650px;
+	}
+	svg.w-5.h-5 {  
+    width: 30px;
+    height: 30px;
+    }
 	
 	
 	</style>
@@ -72,11 +80,14 @@
 	<td>{{ $item->name }}</td>
 	<td>{{ substr($item->start_time,10)}}</td>
 	<td>{{ substr($item->end_time,10) }}</td>
-	<td>{{ gmdate('H:i:s',strtotime($item->end_time)-strtotime($item->start_time))}}</td>
+	<td>{{ gmdate('H:i:s',($item->rests_end_time)-($item->rests_start_time))}}</td>
 	<td>{{ gmdate('H:i:s',strtotime($item->end_time)-strtotime($item->start_time))}}</td>
 	</tr>
 	@endforeach
 	</table>
+	<div class="paginate">
+	{{ $items->links() }}
+	</div>
 	</div>
 	@endsection
 	
