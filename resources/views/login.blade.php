@@ -70,7 +70,7 @@
 	</tr>
 	@enderror
 	<div class="registration-button">
-	<input type="submit" value="ログイン" class="rayouts-button">
+	<input href="/home" type="submit" value="ログイン" class="rayouts-button">
 	</div>
 	</form>
 	<p>アカウントをお持ちでない方はこちらから</p>

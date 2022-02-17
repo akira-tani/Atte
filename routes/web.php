@@ -32,5 +32,5 @@
 	Route::post('/attendance/attendance', [AttendanceController::class, 'NextDay'])->name('/attendance/attendance');
 	//勤怠一覧表示画面//
 	Route::get('/list',[AttendanceController::class, 'AttendanceList']);
-	Route::get('/', [AttendanceController::class, 'LoginAttendance']);
+	Route::get('/', [AttendanceController::class, 'AttendanceList']);
 	});

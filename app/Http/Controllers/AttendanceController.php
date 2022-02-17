@@ -27,7 +27,7 @@
 	$timeStamp = Attendance::create([
 	'atte_user_id' => $user->id,
 	'start_time' => Carbon::now(),
-	'rest_time' => '00:00:00'
+	'rest_time' => Carbon::now(),
 	]);
 	return redirect()->back()->with('my_status', '出勤打刻が完了しました。');
 	}
@@ -82,6 +82,13 @@
 	->get();
 	$items = Attendance::whereDate('start_time', $date)->join('atte_users','atte_users.id','=','attendances.atte_user_id')->paginate(5);
 	return view('list', ['items' => $items],['today' => $date]);
+	$attendances =
+    Attendance::get();
+    foreach ($attendances as
+    $attendances) {
+        $rests =$attendances->rests();
+        dump($rests);
+    };
 	}
 	public function NextDay(Request $request)
 	{
@@ -96,9 +103,6 @@
 	$user_id = Auth::id();
 	$attendance =Attendance::where('atte_user_id',$user_id)->latest()->first();
 	$timeStamp = Rest::where('attendance_id', $attendance->id)->latest()->first();
-	$rests = DB::table('atte_rests')->selectRaw('date_format(start_time,"%Y%m%d") as today')
-	->selectRaw('sum(end_time-start_time) as rest_time')
-	->get();
 	$items = Attendance::whereDate('start_time', $date)->join('atte_users','atte_users.id','=','attendances.atte_user_id')->paginate(5);
 	return view('list', ['today' => $date],['items' => $items]);
 	}

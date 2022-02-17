@@ -11,6 +11,10 @@
 	use HasFactory;
 	protected $table = 'attendances';
 
+	public function rests(){
+		return $this->hasMany(Rest::class);
+	}
+
 	protected $fillable = ['atte_user_id', 'start_time', 'end_time'];
 
 	public function atteuser()
